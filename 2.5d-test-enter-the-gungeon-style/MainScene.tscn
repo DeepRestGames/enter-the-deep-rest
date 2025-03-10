@@ -1,0 +1,130 @@
+[gd_scene load_steps=11 format=3 uid="uid://07gmdpfvvtgf"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_gi5bl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nqi87"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_a6l5l"]
+sky_material = SubResource("ProceduralSkyMaterial_nqi87")
+
+[sub_resource type="Environment" id="Environment_gnlig"]
+background_mode = 2
+sky = SubResource("Sky_a6l5l")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibgsv"]
+albedo_color = Color(0.29219, 0.29219, 0.29219, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ynyta"]
+albedo_color = Color(0.385493, 0.385492, 0.385492, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nu3pw"]
+albedo_color = Color(0.205967, 0.253897, 1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k2t6o"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jf0tb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ybrtr"]
+albedo_color = Color(1, 0.211765, 0, 1)
+
+[node name="Root" type="Node3D"]
+transform = Transform3D(-3.09086e-08, -3.09086e-08, -1, -0.707107, 0.707107, 0, 0.707107, 0.707107, -4.37114e-08, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gnlig")
+
+[node name="Environment" type="Node3D" parent="."]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Ground" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+use_collision = true
+size = Vector3(10, 0.2, 100)
+material = SubResource("StandardMaterial3D_ibgsv")
+
+[node name="Ground4" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
+use_collision = true
+size = Vector3(10, 0.2, 100)
+material = SubResource("StandardMaterial3D_ibgsv")
+
+[node name="Ground2" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 16)
+use_collision = true
+size = Vector3(10, 0.2, 68)
+material = SubResource("StandardMaterial3D_ibgsv")
+
+[node name="Ground3" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -41)
+use_collision = true
+size = Vector3(10, 0.2, 18)
+material = SubResource("StandardMaterial3D_ibgsv")
+
+[node name="Wall" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 5, 0)
+use_collision = true
+size = Vector3(10, 0.2, 100)
+material = SubResource("StandardMaterial3D_ynyta")
+
+[node name="Wall2" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 18.6446, 5, 50)
+use_collision = true
+size = Vector3(10, 0.2, 37)
+material = SubResource("StandardMaterial3D_ynyta")
+
+[node name="Wall3" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 15.1446, 5, 14)
+use_collision = true
+size = Vector3(10, 0.2, 10)
+material = SubResource("StandardMaterial3D_ynyta")
+
+[node name="Wall6" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 15.1446, 5, 24)
+use_collision = true
+size = Vector3(10, 0.2, 10)
+material = SubResource("StandardMaterial3D_ynyta")
+
+[node name="Ceiling" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, -7.10543e-15, 1, -4.37114e-08, -1, -7.10543e-15, 1.91069e-15, 15.1446, 10, 19)
+use_collision = true
+size = Vector3(10, 0.2, 10)
+material = SubResource("StandardMaterial3D_nu3pw")
+
+[node name="Wall4" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(-4.37114e-08, -1, -3.55271e-15, 1, -4.37114e-08, -1.55294e-22, 0, -3.55271e-15, 1, 20.1446, 5, 19)
+use_collision = true
+size = Vector3(10, 0.2, 10)
+material = SubResource("StandardMaterial3D_ynyta")
+
+[node name="Wall5" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(-4.37114e-08, -1, -3.55271e-15, 1, -4.37114e-08, -1.55294e-22, 0, -3.55271e-15, 1, 10.1446, 5, 19)
+use_collision = true
+size = Vector3(10, 0.2, 10)
+material = SubResource("StandardMaterial3D_ynyta")
+
+[node name="Physics" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 4)
+
+[node name="Player" type="CharacterBody3D" parent="Physics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, 1.2, 1.5)
+floor_constant_speed = true
+script = ExtResource("1_gi5bl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Physics/Player"]
+shape = SubResource("SphereShape3D_k2t6o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Physics/Player"]
+mesh = SubResource("SphereMesh_jf0tb")
+surface_material_override/0 = SubResource("StandardMaterial3D_ybrtr")
+
+[node name="Camera3D" type="Camera3D" parent="Physics/Player"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 100, 0)
+projection = 1
+size = 15.0
